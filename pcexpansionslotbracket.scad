@@ -34,11 +34,15 @@ module VGA(height, distance) {
 }
 
 module Part_DVI() {
-
+    Std_Retainer_Hole();
+    right(34) Std_Retainer_Hole();
+    right(3.5) xrot(90) fwd(1) round3d(or=1) { 
+            prismoid([27,7],[27,7],h=10,anchor=LEFT+FWD); 
+        };
 }
 
-module DVI() {
-
+module DVI(height, distance) {
+    right(distance) back(height) Part_DVI();
 }
 
 module Part_HDMI() {
@@ -51,6 +55,7 @@ module HDMI() {
 
 difference() {
     Plate(true);
-    #SVideo(10,71);
-    #VGA(10,26);
+    #DVI(10,26);
+    #SVideo(10,72);
+    #VGA(10,85);
 }
