@@ -9,6 +9,10 @@ module Plate(support) {
     }
 }
 
+module Std_Retainer_Hole() {
+    cylinder(d=3, h=5);
+}
+
 module Part_SVideo() {
     cylinder(d=12, h=5);
 }
@@ -17,7 +21,36 @@ module SVideo(height, distance) {
     right(distance) back(height) Part_SVideo();
 }
 
+module Part_VGA() {
+    Std_Retainer_Hole();
+    right(25) Std_Retainer_Hole();
+    right(3.5) xrot(90) fwd(1) round3d(or=1) { 
+            prismoid([16,7],[20,7],h=10,anchor=LEFT+FWD); 
+        };
+}
+
+module VGA(height, distance) {
+    right(distance) back(height) Part_VGA();
+}
+
+module Part_DVI() {
+
+}
+
+module DVI() {
+
+}
+
+module Part_HDMI() {
+
+}
+
+module HDMI() {
+
+}
+
 difference() {
     Plate(true);
     #SVideo(10,71);
+    #VGA(10,26);
 }
