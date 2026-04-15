@@ -2,8 +2,11 @@ include <BOSL2/std.scad>
 
 $fn=256;
 
-module Plate() {
+module Plate(support) {
     right(25.5) fwd(0.5) up(0.6) xrot(270) import("bracket.stl", convexity=3);
+    if (support) {
+        down(9) right(15) cube([96.7267,1,10]);
+    }
 }
 
 module Part_SVideo() {
@@ -15,6 +18,6 @@ module SVideo(height, distance) {
 }
 
 difference() {
-    Plate();
-    #SVideo(10,60);
+    Plate(true);
+    #SVideo(10,71);
 }
