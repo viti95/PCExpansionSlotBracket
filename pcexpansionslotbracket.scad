@@ -17,24 +17,12 @@ module Part_SVideo() {
     cylinder(d=12, h=5);
 }
 
-module SVideo(height, distance) {
-    right(distance) back(height) Part_SVideo();
-}
-
 module Part_RCA() {
     cylinder(d=10, h=5);
 }
 
-module RCA(height, distance) {
-    right(distance) back(height) Part_RCA();
-}
-
 module Part_Jack35() {
     cylinder(d=8, h=5);
-}
-
-module Jack35(height, distance) {
-    right(distance) back(height) Part_Jack35();
 }
 
 module Part_VGA() {
@@ -45,10 +33,6 @@ module Part_VGA() {
         };
 }
 
-module VGA(height, distance) {
-    right(distance) back(height) Part_VGA();
-}
-
 module Part_DVI() {
     Std_Retainer_Hole();
     right(32) Std_Retainer_Hole();
@@ -57,12 +41,24 @@ module Part_DVI() {
         };
 }
 
-module DVI(height, distance) {
-    right(distance) back(height) Part_DVI();
+module DVI(h, d)     place(h,d) Part_DVI();
+module VGA(h, d)     place(h,d) Part_VGA();
+module SVideo(h, d)  place(h,d) Part_SVideo();
+module RCA(h, d)     place(h,d) Part_RCA();
+module Jack35(h, d)  place(h,d) Part_Jack35();
+
+module place(height, distance) {
+    right(distance) back(height) children();
 }
 
-difference() {
-    Plate(true);
+module bracket(support=true) {
+    difference() {
+        Plate(support);
+        children();
+    }
+}
+
+bracket() {
     #DVI(10,28);
     #SVideo(10,74);
     #VGA(10,85);
