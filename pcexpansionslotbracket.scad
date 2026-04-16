@@ -26,7 +26,15 @@ module Part_RCA() {
 }
 
 module RCA(height, distance) {
-    right(distance) back(height) Part_SVideo();
+    right(distance) back(height) Part_RCA();
+}
+
+module Part_Jack35() {
+    cylinder(d=8, h=5);
+}
+
+module Jack35(height, distance) {
+    right(distance) back(height) Part_Jack35();
 }
 
 module Part_VGA() {
@@ -51,14 +59,6 @@ module Part_DVI() {
 
 module DVI(height, distance) {
     right(distance) back(height) Part_DVI();
-}
-
-module Part_HDMI() {
-
-}
-
-module HDMI() {
-
 }
 
 difference() {
