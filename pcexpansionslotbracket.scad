@@ -21,6 +21,14 @@ module SVideo(height, distance) {
     right(distance) back(height) Part_SVideo();
 }
 
+module Part_RCA() {
+    cylinder(d=10, h=5);
+}
+
+module RCA(height, distance) {
+    right(distance) back(height) Part_SVideo();
+}
+
 module Part_VGA() {
     Std_Retainer_Hole();
     right(25) Std_Retainer_Hole();
