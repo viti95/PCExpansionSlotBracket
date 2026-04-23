@@ -16,7 +16,7 @@ module Std_Retainer_Hole() {
 module Std_Fix_Card() {
     difference() {
         down(10) cube([5,15,11]);
-        back(15) down(8) right(5/2) xrot(90) cylinder(h=10, d=3); 
+        back(15) down(6) right(5/2) xrot(90) cylinder(h=10, d=3); 
     }
 }
 
