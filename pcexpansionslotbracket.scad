@@ -5,12 +5,19 @@ $fn=256;
 module Plate(support) {
     right(25.5) fwd(0.5) up(0.6) xrot(270) import("bracket.stl", convexity=3);
     if (support) {
-        down(9) right(15) cube([96.7267,1,10]);
+        down(10) right(15) cube([96.7267,1,11]);
     }
 }
 
 module Std_Retainer_Hole() {
     cylinder(d=3, h=5);
+}
+
+module Std_Fix_Card() {
+    difference() {
+        down(10) cube([5,15,11]);
+        back(15) down(8) right(5/2) xrot(90) cylinder(h=10, d=3); 
+    }
 }
 
 module Part_SVideo() {
@@ -46,6 +53,7 @@ module VGA(h, d)     place(h,d) Part_VGA();
 module SVideo(h, d)  place(h,d) Part_SVideo();
 module RCA(h, d)     place(h,d) Part_RCA();
 module Jack35(h, d)  place(h,d) Part_Jack35();
+module Fix_Card(h, d) place(h,d) Std_Fix_Card();
 
 module place(height, distance) {
     right(distance) back(height) children();
