@@ -15,8 +15,8 @@ module Std_Retainer_Hole() {
 
 module Std_Fix_Card() {
     difference() {
-        down(10) cube([5,15,11]);
-        back(15) down(6) right(5/2) xrot(90) cylinder(h=10, d=3); 
+        down(10) cube([5,15.5,11]);
+        back(15.5) down(6) right(5/2) xrot(90) cylinder(h=10, d=3); 
     }
 }
 
@@ -53,7 +53,7 @@ module VGA(h, d)     place(h,d) Part_VGA();
 module SVideo(h, d)  place(h,d) Part_SVideo();
 module RCA(h, d)     place(h,d) Part_RCA();
 module Jack35(h, d)  place(h,d) Part_Jack35();
-module Fix_Card(h, d) place(h,d) Std_Fix_Card();
+module Fix_Card(d)   place(0,d) Std_Fix_Card();
 
 module place(height, distance) {
     right(distance) back(height) children();
